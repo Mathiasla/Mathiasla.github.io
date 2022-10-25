@@ -413,3 +413,36 @@ function combineVariableEANSizeColorBrandProductCost(){
 
     return variabel;
 }
+
+// Additional_variation_ label : Color 
+
+function combineAdditionalVariationLabelColor(){
+    var value2 = document.getElementById("selectColor").value;
+
+    const multipleValues = ["XL","L","XXL","M","S","XS"];
+    let variabel = [];
+    
+    // Loop igennem variabel1 array, for at sætte nye værdier.
+    for(i = 0; i < multipleValues.length; i++) {
+        var combinedValue1 = value1+"-"+value2+"-"+multipleValues[i];
+        variabel.push(combinedValue1);
+    }
+    // returnere loopet array
+    return variabel;
+}
+// Additional_variation_ label : Size 
+
+function combineAdditionalVariationLabelSize(){
+    var value2 = document.getElementById("selectSize").value;
+
+    const multipleValues = ["XL","L","XXL","M","S","XS"];
+    let variabel = [];
+    
+    // Loop igennem variabel1 array, for at sætte nye værdier.
+    for(i = 0; i < multipleValues.length; i++) {
+        var combinedValue1 = value1+"-"+value2+"-"+multipleValues[i];
+        variabel.push(combinedValue1);
+    }
+    // returnere loopet array
+    return variabel;
+}
