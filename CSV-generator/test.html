@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="csvForm">
+        <input type="file" id="csvInput" accept=".csv" />
+        <input type="submit" value="Submit" />
+      </form>
+  
+
+      <label for="selectSize">Størrelse</label>
+      <select id="selectSize" name="selectColor">
+          <option>Choose a number</option>
+      </select>
+      <button onclick="retrieveSize()">størrelse</button>
+    <script>
+        const form = document.querySelector("#csvForm");
+        const csvFileInput = document.querySelector("#csvInput");
+        const textArea = document.querySelector("#csvResult");
+        var csvArray2 = [];
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const file = csvFileInput.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    var csvArray = csvToArr(e.target.result, ",");
+   // console.log("textarea: ", textArea);
+   // textArea.value = JSON.stringify(csvArray, null, 4);
+    //console.log(csvArray);
+    csvArray2 = csvArray;
+    return csvArray2;
+  };
+
+
+  reader.readAsText(file);
+});
+function csvToArr(stringVal, splitter) {
+  const [keys, ...rest] = stringVal
+    .trim()
+    .split("\n")
+    .map((item) => item.split(splitter));
+
+  const formedArr = rest.map((item) => {
+    const object = {};
+    keys.forEach((key, index) => (object[key] = item.at(index)));
+    return object;
+  });
+  return formedArr;
+
+}
+function ResetArray(){
+    var csvArray2 = [];
+};
+
+function retrieveSize() {
+var select = document.getElementById("selectSize");
+    //ResetArray();
+    console.log(csvArray3);
+    var csvArray3 = csvArray2;
+
+for(var i = 0; i < csvArray3.length; i++) {
+    var opt = csvArray3[i];
+    var el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.add(el);
+}
+}
+
+    </script>
+   
+</body>
+</html>
